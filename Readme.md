@@ -1,10 +1,3 @@
-Here’s a detailed `README.md` template and steps to generate a Postman collection for your **Leaderboard API**.
-
----
-
-## README.md
-
-```markdown
 # Leaderboard API
 
 This is a RESTful API service built using **Spring Boot** and **MongoDB** to manage the leaderboard of a coding contest. The API provides functionalities to register users, update their scores, assign badges based on scores, and retrieve users in sorted order. The project also includes basic validation and error handling.
@@ -132,9 +125,7 @@ You can use the following **Postman Collection** to test the API. Import the col
 
 ## License
 This project is open-source and available under the MIT License.
-```
 
----
 
 ## How to Generate and Share the Postman Collection
 
