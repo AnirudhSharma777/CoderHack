@@ -125,9 +125,7 @@ You can use the following **Postman Collection** to test the API. Import the col
 
 ## License
 This project is open-source and available under the MIT License.
-```
 
----
 
 ## How to Generate and Share the Postman Collection
 
