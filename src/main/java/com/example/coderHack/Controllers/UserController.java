@@ -1,7 +1,6 @@
 package com.example.coderHack.Controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,9 +25,13 @@ public class UserController {
 
     @GetMapping("/{userId}")
     public ResponseEntity<User> getUserById(@PathVariable("userId") Integer userId) {
-        return userService.getUserById(userId)
-                .map(user -> ResponseEntity.ok(user)) // Corrected this line
-                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+        User user = userService.getUserById(userId);
+
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     @PostMapping
@@ -38,15 +41,20 @@ public class UserController {
     }
 
     @PutMapping("/{userId}")
-    public ResponseEntity<User> updateUserScore(@PathVariable Integer userId, @RequestParam int score) {
+    public ResponseEntity<User> updateUserScore(
+        @PathVariable("userId") Integer userId, 
+        @RequestParam(name = "score", required = true)  int score) {
         User updatedUser = userService.updateUserScore(userId, score);
-        return Optional.ofNullable(updatedUser)
-                .map(user -> ResponseEntity.ok(user))
-                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build()); // Handle not found
+
+        if (updatedUser != null) {
+            return ResponseEntity.ok(updatedUser); // Return 200 OK with the updated user
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // Return 404 Not Found
+        }
     }
 
     @DeleteMapping("/{userId}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Integer userId) {
+    public ResponseEntity<Void> deleteUser(@PathVariable("userId") Integer userId) {
         userService.deleteUser(userId);
         return ResponseEntity.noContent().build(); // Return 204 No Content
     }
