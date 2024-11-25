@@ -33,7 +33,7 @@ This is a RESTful API service built using **Spring Boot** and **MongoDB** to man
 |--------|---------------------|------------------------------------------|------------------------------------|
 | GET    | `/users`            | Retrieve all registered users            | -                                  |
 | GET    | `/users/{userId}`   | Retrieve details of a specific user      | -                                  |
-| POST   | `/users`            | Register a new user                      | `{ "userId": "123", "username": "Anirudh" }` |
+| POST   | `/users`            | Register a new user                      | `{ "userId": 123, "username": "Anirudh" }` |
 | PUT    | `/users/{userId}`   | Update the score of a specific user      | `/users/123?score=45`              |
 | DELETE | `/users/{userId}`   | Deregister a user                        | -                                  |
 
@@ -70,7 +70,7 @@ POST /users
 **Request Body:**
 ```json
 {
-  "userId": "123",
+  "userId": 123,
   "username": "Anirudh"
 }
 ```
@@ -109,7 +109,7 @@ DELETE /users/123
 ## Unit Tests
 This project includes **JUnit tests** to ensure the correct functionality of the leaderboard system. To run the tests:
 ```bash
-mvn test
+.\gradlew test
 ```
 
 ---

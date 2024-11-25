@@ -1,4 +1,4 @@
-package com.example.coderHack.Repositoies;
+package com.example.coderHack.Repositories;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,8 +10,6 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.coderHack.Enitities.User;
-import com.example.coderHack.Repositories.UserRepository;
-
 
 @DataMongoTest
 public class UserRepositoryTest {
@@ -20,7 +18,7 @@ public class UserRepositoryTest {
     private UserRepository userRepository;
 
     @BeforeEach
-    void setup(){
+    void setup() {
         userRepository.deleteAll();
     }
 
@@ -39,7 +37,7 @@ public class UserRepositoryTest {
         assertThat(savedUser.getScore()).isEqualTo(10);
     }
 
-     @Test
+    @Test
     void testFindUserById() {
         User user = new User();
         user.setUserId(124);
@@ -86,5 +84,4 @@ public class UserRepositoryTest {
 
         assertThat(retrievedUser).isEmpty();
     }
-
 }
